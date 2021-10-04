@@ -1,0 +1,19 @@
+name: CI to Docker Hub
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Repo 
+        uses: actions/checkout@v2
+
+      - name: Build docker image
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: false
+          tags: $GITHUB_SHA/hello-app:latest
+
+      - name: Success message
+        run: echo "Successfully built hello-app docker image from $GITHUB_SHA"
