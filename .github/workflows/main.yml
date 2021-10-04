@@ -13,7 +13,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: false
-          tags: ${{ GITHUB_SHA }}/hello-app:latest
+          tags: ${{ github.sha }}/hello-app:latest
 
       - name: Success message
         run: echo "Successfully built hello-app docker image from $GITHUB_SHA"
